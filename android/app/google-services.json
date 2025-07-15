@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "865767688609",
+    "project_id": "qr-mobile-scanner",
+    "storage_bucket": "qr-mobile-scanner.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865767688609:android:47dbc0033e3645f8b7e3e0",
+        "android_client_info": {
+          "package_name": "com.cgcvdev.gymcheckin.poc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjOIrrWyANSbF3kZEoXY3VOixGVtjgkWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865767688609:android:e5e47055637ef53db7e3e0",
+        "android_client_info": {
+          "package_name": "com.example.qr_membership_poc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjOIrrWyANSbF3kZEoXY3VOixGVtjgkWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

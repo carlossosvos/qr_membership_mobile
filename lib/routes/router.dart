@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qr_membership_poc/features/auth/screens/auth_screen.dart';
+import 'package:qr_membership_poc/features/auth/screens/email_verification_screen.dart';
+import 'package:qr_membership_poc/features/checkin/screens/home_screen.dart';
 import '../features/auth/cubit/auth_cubit.dart';
 import '../features/auth/cubit/auth_state.dart';
 // TODO: Import these when screens are created
@@ -116,40 +119,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(body: Center(child: CircularProgressIndicator()));
-  }
-}
-
-// Placeholder screens - TODO: Replace with actual implementations
-class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Auth Screen - TODO: Implement')),
-    );
-  }
-}
-
-class EmailVerificationScreen extends StatelessWidget {
-  const EmailVerificationScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Email Verification Screen - TODO: Implement')),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Home Screen - TODO: Implement')),
-    );
   }
 }
 

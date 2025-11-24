@@ -12,35 +12,53 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AppText(
-              text: 'Welcome back!',
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          flexibleSpace: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const AppText(
+                          text: 'Welcome back!',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        const SizedBox(height: 4),
+                        const LiveClock(
+                          alignment: CrossAxisAlignment.start,
+                          showSeconds: true,
+                          showDate: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.read<AuthCubit>().signOut();
+                    },
+                    icon: const Icon(
+                      Icons.logout_outlined,
+                      color: Colors.black54,
+                    ),
+                    tooltip: 'Sign Out',
+                  ),
+                ],
+              ),
             ),
-            const LiveClock(
-              alignment: CrossAxisAlignment.start,
-              showSeconds: true,
-              showDate: true,
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.read<AuthCubit>().signOut();
-            },
-            icon: const Icon(Icons.logout_outlined, color: Colors.black54),
-            tooltip: 'Sign Out',
           ),
-        ],
+        ),
       ),
       body: SafeArea(
         child: Padding(

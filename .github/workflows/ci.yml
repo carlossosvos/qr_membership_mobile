@@ -1,0 +1,70 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.3'
+        channel: 'stable'
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Verify formatting
+      run: flutter format --set-exit-if-changed .
+      
+    - name: Analyze project source
+      run: flutter analyze --fatal-infos
+      
+    - name: Run tests
+      run: flutter test
+      
+    - name: Check for outdated dependencies
+      run: flutter pub outdated --mode=null-safety
+      
+  build:
+    needs: analyze
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.3'
+        channel: 'stable'
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Build APK
+      run: flutter build apk --debug
+      
+    - name: Build iOS (dry run)
+      run: flutter build ios --debug --no-codesign
+      
+    - name: Build Web
+      run: flutter build web
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: |
+          build/app/outputs/flutter-apk/app-debug.apk
+          build/web/
